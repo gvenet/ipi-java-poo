@@ -1,0 +1,6 @@
+idCompte,solde,decouvertAutorise,idUser,NomUser,PrenomUser
+0,500,-500,0,Flantier,Noel
+1,1000,-10000,0,Flantier,Noel
+2,5000,0,1,Bonnisseur_de_la_Bath,Hubert
+3,10000,-42,1,Bonnisseur_de_la_Bath,Hubert
+4,8000,-8000,2,Bon,Jean

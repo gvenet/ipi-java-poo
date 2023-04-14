@@ -1,2 +1,2 @@
 # ipi-java-poo
-- execute go.sh in each directory
+- executer go.sh depuis chaque sous dossier

@@ -30,16 +30,13 @@ class Main {
 
       if (number % 2 == 0) {
         System.out.println(number + " is an even number");
-      } 
-      else if (number % 2 != 0) {
+      } else if (number % 2 != 0) {
         System.out.println(number + " is an odd number");
       }
 
       if (isPrime(number)) {
         System.out.println(number + " is prime");
       }
-
-
     }
   }
 }
