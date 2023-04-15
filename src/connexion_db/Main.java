@@ -1,36 +1,43 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+import java.util.*;
+import util.*;
 
 public class Main {
+
   public static void main(String[] args) throws Exception {
-    Connection conn = getConnection();
-    Statement st = conn.createStatement();
-    // st.executeUpdate("drop table survey;");
-    st.executeUpdate("create table survey (id int,name varchar(30));");
-    st.executeUpdate("insert into survey (id,name ) values (1,'nameValue')");
+    CRUD service = new CRUD();
+    Scanner sc = new Scanner(System.in);
+    while (true) {
+      System.out.println(
+        "Menu : 0-exit | 1-display | 2-create | 3-update | 4-delete"
+      );
+      String menu = sc.next();
 
-    st = conn.createStatement();
-    ResultSet rs = st.executeQuery("SELECT * FROM survey");
-
-    ResultSetMetaData rsMetaData = rs.getMetaData();
-
-    int numberOfColumns = rsMetaData.getColumnCount();
-    System.out.println("resultSet MetaData column Count=" + numberOfColumns);
-
-    st.close();
-    conn.close();
-  }
-
-  private static Connection getConnection() throws Exception {
-    String driver = "com.mysql.cj.jdbc.Driver";
-    String url = "jdbc:mysql://localhost:3306/connexion_db";
-    String username = "gvenet";
-    String password = "gvenet";
-    Class.forName(driver);
-    return DriverManager.getConnection(url, username, password);
-    // return DriverManager.getConnection("jdbc:mysql://localhost:3306/connexion_db?user=root&password=root");
+      switch (menu) {
+        case "0":
+          service.close();
+          System.exit(0);
+          break;
+        case "1":
+          service.read();
+          break;
+        case "2":
+          System.out.print("Enter a name : ");
+          service.create(sc.next());
+          break;
+        case "3":
+          System.out.print("Select id : ");
+          int id = sc.nextInt();
+          System.out.print("Enter name : ");
+          String name = sc.next();
+          service.update(id, name);
+          break;
+        case "4":
+          System.out.print("Select id : ");
+          service.delete(sc.nextInt());
+          break;
+        default:
+          System.out.println("Wrong input");
+      }
+    }
   }
 }
