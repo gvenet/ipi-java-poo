@@ -1,0 +1,7 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+CREATE DATABASE connexion_db;
+CREATE USER 'gvenet'@'10.5.0.1' IDENTIFIED BY 'gvenet';
+GRANT ALL PRIVILEGES ON *.* TO 'gvenet'@'10.5.0.1' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+QUIT
+
